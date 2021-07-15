@@ -53,7 +53,7 @@ void encrypt(char *filename)
             while(c > 0) {
                 len++;
                 h = len / width;
-                w = len % height;
+                w = len % width;
                 shift = (c > 4 ? 4 : c);
                 rgb[h][w].blue = (rgb[h][w].blue + shift <= 255 ? rgb[h][w].blue + shift : rgb[h][w].blue - shift);
                 c -= shift;
@@ -94,7 +94,7 @@ void decrypt(char *image1, char *image2)
     int c = 0;
     char message[1000];
     while (numSpaces < 3 && len < dimension && idx < 1000) {
-        w = len % height;
+        w = len % width;
         h = len / width;
         dif = abs(rgb1[h][w].blue - rgb2[h][w].blue);
         c += dif;
