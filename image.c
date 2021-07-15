@@ -63,7 +63,9 @@ void freeImage(struct Image pic)
     free(pic.rgb);
 }
 
-
+/*
+ Opens the bmp file from the given filename and returns a structure of the data read from the file format.
+*/
 struct Data openBMPFile(char *filename) 
 {
     FILE *fp = fopen(filename, "r");
@@ -84,7 +86,7 @@ struct Data openBMPFile(char *filename)
     data.header = header;
     data.dibheader = dibheader;
 
-    if((dibheader.headerSize != 40) || (dibheader.compression != 0) //If image is compressed then this doesn't work
+    if ((dibheader.headerSize != 40) || (dibheader.compression != 0) //If image is compressed then this doesn't work
         || (dibheader.bitsPerPixel != 24)) {
         printf("No good...\n");
         fclose(fp);
