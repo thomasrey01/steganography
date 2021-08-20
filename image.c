@@ -88,7 +88,6 @@ struct Data openBMPFile(char *filename)
 
     if ((dibheader.headerSize != 40) || (dibheader.compression != 0) //If image is compressed then this doesn't work
         || (dibheader.bitsPerPixel != 24)) {
-        printf("No good...\n");
         fclose(fp);
         exit(-1);
     }
